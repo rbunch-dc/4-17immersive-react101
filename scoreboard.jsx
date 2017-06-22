@@ -83,13 +83,37 @@ function Team(props){
 // var with the name of teh COmponent
 // The only REQUIRED property, is render
 var Counter = React.createClass({
+	// A set React property (like render), is getInitialState
+	getInitialState: function() {
+		// this function sets the initial statate value of a variable
+		// It returns a single object
+		var stateObject = {
+			gamesBack: 0
+		}
+		return stateObject;
+	},
+
+	addGame: function(){
+		this.setState({
+			gamesBack: this.state.gamesBack + 1
+		})
+		// BAD!!!!!!
+		// EVIL!!!!
+		// this.state.gamesBack++;
+	},
+	loseGame: function(){
+		this.setState({
+			gamesBack: this.state.gamesBack - 1
+		})
+	},
+
 	render: function(){
 		// back to the good old days...
 		return(
 			<div className="counter">
-				<button className="btn btn-success">+</button>
-				<div className="games-back">games-back will go here</div>
-				<button className="btn btn-danger">-</button>
+				<button onClick={this.addGame} className="btn btn-success">+</button>
+				<div className="games-back">{this.state.gamesBack}</div>
+				<button onClick={this.loseGame} className="btn btn-danger">-</button>
 			</div>
 		)
 	}
