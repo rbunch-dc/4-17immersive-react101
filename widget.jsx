@@ -48,7 +48,7 @@ var products = [
 function ProductCategoryRow(props){
 	return(
 		<tr>
-			<td>{props.category}</td>
+			<th>{props.category}</th>
 		</tr>
 	)
 }
@@ -100,7 +100,7 @@ function ProductTable(props){
 // ]
 
 	return(
-		<table>
+		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>Name</th>
