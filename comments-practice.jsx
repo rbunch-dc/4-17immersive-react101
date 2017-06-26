@@ -59,15 +59,15 @@ function Comment(props) {
 
 function Application(props){
   console.log(props)
+  var commentsArray = [];
+  props.data.map((comment,index)=>{
+    commentsArray.push(<Comment key={index} author={comment.author} userBadge = {comment.userBadge} text={comment.text} commentHeading={comment.commentHeading} date={comment.date} />)
+  })
   return(
       <div className="container">
         <h1>Some Facebook Post</h1>
-        {props.data.map((comment,index)=>{
-          return <Comment author={comment.author} userBadge = {comment.userBadge} text={comment.text} commentHeading={comment.commentHeading} date={comment.date} />
-        })}
+        {commentsArray}
         { /* <Comment author={props.data[0].author} userBadge = {props.data[0].userBadge} text={props.data[0].text} commentHeading={props.data[0].commentHeading} date={props.data[0].date} /> */ }
-
-
       </div>
   )
 }
