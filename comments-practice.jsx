@@ -1,7 +1,7 @@
 var data = [
   {
     author:{
-      avatar: "http://iconpopanswers.com/wp-content/uploads/2013/04/icomania-large-167.jpg",
+      avatarUrl: "http://iconpopanswers.com/wp-content/uploads/2013/04/icomania-large-167.jpg",
       name:"neo"
     },
     commentHeading: "I am the One.",
@@ -11,6 +11,20 @@ var data = [
       'Superman',
       'Herald',
       'Engineer'
+    ]
+  },
+  {
+    author:{
+      avatarUrl: "https://maxcdn.icons8.com/Color/PNG/512/Cinema/morpheus-512.png",
+      name:"Morpheus"
+    },
+    commentHeading: "There is no spoon.",
+    text: "Don't htink you are. KNow you are.",
+    date: "Two days ago",
+    userBadge: [ 
+      'The man',
+      'Bard',
+      'Samurai swordsman'
     ]
   }
 ]
@@ -31,7 +45,7 @@ function Comment(props) {
         <h1>{props.commentHeading}</h1>
         <div className="Comment-text">{props.text}</div>
         <div className="Comment-date">
-          {formatDate(props.date)}
+          {props.date}
         </div>
       </div>
       <div className="UserBadges">
@@ -43,16 +57,23 @@ function Comment(props) {
   );
 }
 
-function Application(){
+function Application(props){
+  console.log(props)
   return(
-      <div>
-        <h1>Sanity Check!</h1>
+      <div className="container">
+        <h1>Some Facebook Post</h1>
+        {props.data.map((comment,index)=>{
+          return <Comment author={comment.author} userBadge = {comment.userBadge} text={comment.text} commentHeading={comment.commentHeading} date={comment.date} />
+        })}
+        { /* <Comment author={props.data[0].author} userBadge = {props.data[0].userBadge} text={props.data[0].text} commentHeading={props.data[0].commentHeading} date={props.data[0].date} /> */ }
+
+
       </div>
   )
 }
 
 
 ReactDOM.render(
-  <Application data = {data[0]}/>,
+  <Application data = {data} crossFitJunkie="Rissa" />,
   document.getElementById('root')
 )
