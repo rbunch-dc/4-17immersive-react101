@@ -10,7 +10,10 @@ var data = [
     userBadge: [ 
       'Superman',
       'Herald',
-      'Engineer'
+      'Engineer',
+      'The Chosen One',
+      'Ninja',
+      'Legolas\'s idol'
     ]
   },
   {
@@ -77,9 +80,12 @@ function Comment(props) {
         date={props.date} 
       />
       <div className="UserBadges">
-        <Badge userBadge={props.userBadge[0]} />
-        <Badge userBadge={props.userBadge[1]} />
-        <Badge userBadge={props.userBadge[2]} />
+        {props.userBadge.map((badge,index)=>{
+          return(<Badge key={index} userBadge={badge} />)
+        })}
+        { /* <Badge userBadge={props.userBadge[0]} /> */}
+        { /* <Badge userBadge={props.userBadge[1]} /> */}
+        { /* <Badge userBadge={props.userBadge[2]} /> */}
       </div>
     </div>
   );
