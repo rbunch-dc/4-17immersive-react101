@@ -29,29 +29,57 @@ var data = [
   }
 ]
 
-function Comment(props) {
-  return (
-    <div className="Comment">
-      <div className="UserInfo">
-        <img className="Avatar"
-          src={props.author.avatarUrl}
-          alt={props.author.name}
-        />
+function Avatar(props){
+  return(
+    <img className="Avatar"
+      src={props.avatarUrl}
+      alt={props.name}
+    />
+    )
+}
+
+function UserInfo(props){
+  return(
+    <div className="UserInfo">
+        <Avatar avatarUrl={props.author.avatarUrl} name={props.author.name} />
         <div className="UserInfo-name">
           {props.author.name}
         </div>
-      </div>
-      <div className="Comment-body">
+      </div> 
+  )
+}
+
+function CommentBody(props){
+  return (
+    <div className="Comment-body">
         <h1>{props.commentHeading}</h1>
         <div className="Comment-text">{props.text}</div>
         <div className="Comment-date">
           {props.date}
         </div>
-      </div>
+    </div>    
+  )
+}
+
+function Badge(props){
+  return (
+    <div className="badge">{props.userBadge}</div>
+  )
+}
+
+function Comment(props) {
+  return (
+    <div className="Comment">
+      <UserInfo author={props.author} />
+      <CommentBody 
+        commentHeading={props.commentHeading} 
+        text={props.text} 
+        date={props.date} 
+      />
       <div className="UserBadges">
-        <div className="badge">{props.userBadge[0]}</div>
-        <div className="badge">{props.userBadge[1]}</div>
-        <div className="badge">{props.userBadge[2]}</div>
+        <Badge userBadge={props.userBadge[0]} />
+        <Badge userBadge={props.userBadge[1]} />
+        <Badge userBadge={props.userBadge[2]} />
       </div>
     </div>
   );
