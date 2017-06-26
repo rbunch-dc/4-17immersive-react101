@@ -50,7 +50,7 @@ var Application = React.createClass({
 						{ /* Posters go here */ }
 						{this.state.moviesToShow.map((movie, index)=>{
 							var moviePoster = imagePath + movie.poster_path
-							return <Poster key={index} poster={moviePoster} />
+							return <Poster pointless="huh" key={index} poster={moviePoster} />
 						})}
 
 					</div>
